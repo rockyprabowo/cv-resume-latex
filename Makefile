@@ -5,7 +5,7 @@ signoff:
 	@TAG="$$(python3 scripts/next_tag.py)"; \
 	echo "Using tag: $$TAG"; \
 	git add -A; \
-	git commit -s -m "$(MSG)"; \
-	git tag -a "$$TAG" -m "$$TAG"; \
+	git commit -S -m "$(MSG)"; \
+	git tag -s -a "$$TAG" -m "$$TAG"; \
 	git push; \
 	git push --tags
