@@ -1,34 +1,39 @@
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1pt}
+\setlength{\parskip}{0pt}
 \setlength{\emergencystretch}{2em}
 \renewcommand{\baselinestretch}{0.98}
 
 \setlist[itemize]{
-    leftmargin=1.15em,
+    leftmargin=1.5em,
     itemsep=1.15pt,
-    topsep=3pt,
+    topsep=2pt,
     parsep=0pt,
     partopsep=0pt
 }
 
 \titleformat{\section}{\normalsize\bfseries}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{7pt}{5pt}
+\titlespacing{\section}{0pt}{7pt}{6pt}
 
-\newcommand{\tech}[1]{%
+\newcommand{\tech}[1]{
     {\small\textbf{Tech:} #1}\par
 }
 
-\newcommand{\role}[4]{%
+\newcommand{\role}[4]{
     \textbf{#1} \hfill \textbf{#2} \\
-    \textbf{#3}%
-    \ifstrempty{#4}%
-        {\par\vspace{1pt}}%
-        {\\{\footnotesize\textit{#4}}\par\vspace{1pt}}%
+    \textbf{#3}
+    \ifstrempty{#4}
+        {\par\vspace{1pt}}
+        {\\{\footnotesize\textit{#4}}\par\vspace{1pt}}
 }
 
-\newenvironment{jobentry}[1][12]{%
-    \Needspace{#1\baselineskip}
-    \vspace{4pt}
-}{%
-    \par\vspace{5pt}
+\newenvironment{jobentry}{
+    \Needspace{6\baselineskip}
+    \vspace{2pt}
+}{
+    \par\vspace{4pt}
 }
+
+% Toggle BFI role visibility.
+\newtoggle{showRoleBfi}
+% \toggletrue{showRoleBfi}
+\togglefalse{showRoleBfi}
