@@ -1,22 +1,28 @@
 \Needspace{10\baselineskip}
 \section*{Work Experience}
 
+% Toggle BFI role visibility.
+\newtoggle{showRoleBfi}
+% \toggletrue{showRoleBfi}
+\togglefalse{showRoleBfi}
+
 \begin{jobentry}[9]
 \role
 {Backend Developer}
 {January 2026 -- Present}
 {PT Elektronik Distribusi Otomatisasi Terkemuka (eDOT)}
-{Project-based contract under PT Hermes Solusi Integrasi}
+{Project-based contract under PT Hermes Solusi Integrasi; remote arrangement}
 
 \begin{itemize}
     \item Designed and developed backend services for the \textbf{ework Sales Force Automation leaderboard}, supporting supervisor-wide salesperson rankings in a multitenant system.
     \item Optimized caching and API response paths for production traffic, supporting approximately \textbf{21,000 daily active users} with \textbf{65 ms P50} and \textbf{82 ms P95} latency in the production environment.
-    \item Built configurable achievement variables and metric calculation components for \textbf{esuite ERP platform}, enabling tenant-specific leaderboard formulas, performance metrics, and data-ingestion workflows.
+    \item Built configurable achievement variables and metric calculation components for the \textbf{esuite platform}, enabling tenant-specific leaderboard formulas, performance metrics, and data-ingestion workflows.
     \item Developed backend services for POS license management, device registration, device status monitoring, and tenant migration tooling.
 \end{itemize}
 \tech{Go, REST API, gRPC, MongoDB, RabbitMQ, Redis, Docker, k6, AWS, Grafana, OpenTelemetry.}
 \end{jobentry}
 
+\iftoggle{showRoleBfi}{
 \begin{jobentry}[7]
 \role
 {Full Stack Engineer}
@@ -30,6 +36,7 @@
 \end{itemize}
 \tech{Go, Python, SolidJS, HTMX, ArangoDB, NATS, RabbitMQ, Temporal, Selenium, WebDriver, llama.cpp, Google Cloud Vision.}
 \end{jobentry}
+}{}
 
 \begin{jobentry}[8]
 \role
@@ -76,7 +83,7 @@
     \item Designed a plugin-based architecture for integrating surveillance monitoring dashboard with camera stream compression services via REST API and AI analytics services via gRPC.
     \item Developed Go microservices to incrementally replace legacy ingestion flows and improve write-intensive AI analytics processing from edge devices deployed across 10,000+ Bank BRI cash-recycling machines.
 \end{itemize}
-\tech{Go, Python, FastAPI, Flask, TypeScript, Node.js, React, MongoDB, MySQL, Redis, BullMQ, Asynq, gRPC, ONVIF, SQLite, Docker, Prometheus, k3s, Microsoft Azure, Google Cloud.}
+\tech{Go, Python, FastAPI, TypeScript, Node.js, React, MongoDB, MySQL, Redis, BullMQ, gRPC, ONVIF, SQLite, Docker, Prometheus, k3s, Microsoft Azure, Google Cloud.}
 \end{jobentry}
 
 \begin{jobentry}[10]
@@ -89,9 +96,9 @@
 \begin{itemize}
     \item Designed, developed, and maintained multitenant-capable CRM and ERP systems for eight SMEs across lead management, sales workflows, inventory, reporting, and role-based access.
     \item Delivered CRM/ERP workflow improvements linked to client-reported \textbf{10--35\%} gains in lead conversion and sales performance.
-    \item Led development of custom karaoke business systems across South Sumatra, covering network-connected playback, POS, online payments, inventory controls, and business management modules.
+    \item Led development of custom karaoke business systems across South Sumatra, covering network-connected playback application, POS, online payments, inventory controls, and business management modules.
     \item Reduced client-reported playback complaints and inventory/cash-loss incidents through improved system reliability, controls, and operational reporting.
     \item Contributed to additional NDA-covered systems involving C\#, .NET, Java/Spring Boot, Ruby on Rails, Cassandra, Oracle Database, Keycloak, and Elasticsearch.
 \end{itemize}
-\tech{TypeScript, Nest.js, Vue 3, Nuxt, Node.js, PHP, Laravel, PostgreSQL, SQLite, Redis, Kafka, RabbitMQ, Keycloak, Elasticsearch, Docker, k3s, Qt, Python (PyQt5), Flutter.}
+\tech{TypeScript, Nest.js, Vue 3, Nuxt, Node.js, PHP, Laravel, PostgreSQL, SQLite, Redis, Kafka, RabbitMQ, Keycloak, Meilisearch, Docker, k3s, Qt, PyQt5, Flutter.}
 \end{jobentry}
