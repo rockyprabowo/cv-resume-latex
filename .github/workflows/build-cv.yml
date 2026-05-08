@@ -17,13 +17,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Build PDF
         run: latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
 
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cv-pdf
           path: |
@@ -40,26 +40,31 @@ jobs:
 
     steps:
       - name: Download PDF artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: cv-pdf
+          path: release-assets
 
       - name: Rename release assets
-        id: rename_assets
         run: |
           DATE_EN="$(LC_TIME=C date '+%B %d, %Y')"
           TAG="${GITHUB_REF_NAME}"
           PDF_NAME="CV Rocky Prabowo (${DATE_EN}).pdf"
           LOG_NAME="main_${TAG}.log"
-          mv main.pdf "${PDF_NAME}"
-          mv main.log "${LOG_NAME}"
-          echo "pdf_name=${PDF_NAME}" >> "${GITHUB_OUTPUT}"
-          echo "log_name=${LOG_NAME}" >> "${GITHUB_OUTPUT}"
+          test -f release-assets/main.pdf
+          test -f release-assets/main.log
+          mv release-assets/main.pdf "release-assets/${PDF_NAME}"
+          mv release-assets/main.log "release-assets/${LOG_NAME}"
+
+      - name: Verify release assets
+        run: ls -lah release-assets
 
       - name: Create GitHub release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: |
-            ${{ steps.rename_assets.outputs.pdf_name }}
-            ${{ steps.rename_assets.outputs.log_name }}
+            release-assets/*.pdf
+            release-assets/main_*.log
+          fail_on_unmatched_files: true
+          overwrite_files: true
           generate_release_notes: true
