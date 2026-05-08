@@ -8,6 +8,8 @@ variables:
 build_cv_pdf:
   stage: build
   image: texlive/texlive:latest
+  rules:
+    - if: '$CI_COMMIT_TAG'
   script:
     - latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
   artifacts:
@@ -20,7 +22,7 @@ build_cv_pdf:
 
 release_cv_pdf:
   stage: release
-  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  image: registry.gitlab.com/gitlab-org/cli:v1.94.0
   needs:
     - job: build_cv_pdf
       artifacts: true
