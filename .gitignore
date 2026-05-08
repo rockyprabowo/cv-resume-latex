@@ -26,5 +26,5 @@ latexmkrc
 *.swp
 *.swo
 
-# Generated PDF outputs (uncomment if you don't want PDFs tracked)
-# *.pdf
+# Generated PDF outputs
+*.pdf
