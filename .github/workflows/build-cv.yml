@@ -44,10 +44,22 @@ jobs:
         with:
           name: cv-pdf
 
+      - name: Rename release assets
+        id: rename_assets
+        run: |
+          DATE_EN="$(LC_TIME=C date '+%B %d, %Y')"
+          TAG="${GITHUB_REF_NAME}"
+          PDF_NAME="CV Rocky Prabowo (${DATE_EN}).pdf"
+          LOG_NAME="main_${TAG}.log"
+          mv main.pdf "${PDF_NAME}"
+          mv main.log "${LOG_NAME}"
+          echo "pdf_name=${PDF_NAME}" >> "${GITHUB_OUTPUT}"
+          echo "log_name=${LOG_NAME}" >> "${GITHUB_OUTPUT}"
+
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            main.pdf
-            main.log
+            ${{ steps.rename_assets.outputs.pdf_name }}
+            ${{ steps.rename_assets.outputs.log_name }}
           generate_release_notes: true
