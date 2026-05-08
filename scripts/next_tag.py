@@ -2,9 +2,10 @@
 """Generate next date-based tag in YYYYMMDD-N format.
 
 Rules:
-- Only considers tags matching today's date prefix: YYYYMMDD-N
-- Bumps N by 1 from the highest existing value for today
-- Starts at N=1 when no tag exists for today
+- Considers tags matching YYYYMMDD-N
+- Uses effective date = max(local today, latest tagged date)
+- Bumps N by 1 from the highest existing value on the effective date
+- Starts at N=1 when no tag exists on the effective date
 """
 
 from __future__ import annotations
@@ -27,15 +28,21 @@ def get_tags() -> list[str]:
 
 def main() -> int:
     today = dt.date.today().strftime("%Y%m%d")
-    pattern = re.compile(rf"^{today}-(\d+)$")
+    pattern = re.compile(r"^(\d{8})-(\d+)$")
 
-    max_n = 0
+    by_date: dict[str, int] = {}
     for tag in get_tags():
         match = pattern.match(tag)
         if match:
-            max_n = max(max_n, int(match.group(1)))
+            date_part = match.group(1)
+            seq = int(match.group(2))
+            by_date[date_part] = max(by_date.get(date_part, 0), seq)
 
-    print(f"{today}-{max_n + 1}")
+    latest_tag_date = max(by_date.keys()) if by_date else today
+    effective_date = max(today, latest_tag_date)
+    next_seq = by_date.get(effective_date, 0) + 1
+
+    print(f"{effective_date}-{next_seq}")
     return 0
 
 
