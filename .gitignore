@@ -1,0 +1,30 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# latexmk / temporary files
+latexmkrc
+*~
+*.swp
+*.swo
+
+# Generated PDF outputs (uncomment if you don't want PDFs tracked)
+# *.pdf

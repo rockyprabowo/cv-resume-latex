@@ -1,0 +1,40 @@
+stages:
+  - build
+  - release
+
+variables:
+  TEXINPUTS: ".:"
+
+build_cv_pdf:
+  stage: build
+  image: texlive/texlive:latest
+  script:
+    - latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+  artifacts:
+    name: "cv-pdf-$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+    when: always
+    expire_in: 14 days
+    paths:
+      - main.pdf
+      - main.log
+
+release_cv_pdf:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  needs:
+    - job: build_cv_pdf
+      artifacts: true
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  script:
+    - echo "Creating release for $CI_COMMIT_TAG"
+  release:
+    tag_name: "$CI_COMMIT_TAG"
+    name: "Release $CI_COMMIT_TAG"
+    description: "Automated CV PDF release for tag $CI_COMMIT_TAG"
+    assets:
+      links:
+        - name: "main.pdf"
+          url: "${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/main.pdf"
+        - name: "main.log"
+          url: "${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/main.log"
