@@ -31,7 +31,7 @@ Output:
 - `main.pdf`
 - `main.log`
 
-## Commiting new revision
+## Committing new revision
 
 Use:
 
