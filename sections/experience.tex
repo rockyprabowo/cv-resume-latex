@@ -9,8 +9,10 @@
 {Project-based contract under PT Hermes Solusi Integrasi; remote arrangement}
 
 \begin{itemize}
-    \item Designed and developed backend services for the \textbf{ework Sales Force Automation leaderboard}, supporting supervisor-wide salesperson rankings in a multitenant system.
-    \item Optimized caching and API response paths for production traffic, supporting approximately \textbf{21,000 daily active users} with \textbf{65 ms P50} and \textbf{82 ms P95} latency in the production environment.
+    \item Designed and developed the backend for the \textbf{ework Sales Force Automation leaderboard}, supporting supervisor-wide salesperson rankings in a multitenant system with \textbf{\textasciitilde{}21,000 daily active users}.
+    \iftoggle{showOptionalExperience}{
+    \item Optimized caching and API response paths for production traffic, enabling consitent performance with \textbf{65 ms P50} and \textbf{82 ms P95} latency in the production environment.
+	}{}
     \item Built configurable achievement variables and metric calculation components for the \textbf{esuite platform}, enabling tenant-specific leaderboard formulas, performance metrics, and data-ingestion workflows.
     \item Designed and built backend services for POS license management, device registration, device status monitoring, and tenant migration tooling.
 \end{itemize}
@@ -74,10 +76,12 @@
 	\item Designed an air-gapped on-premise system for \textbf{Garuda ID}, a match-day access control system for Indonesian national team football events, allowing officers to validate ticket and face-recognition data without relying on public Internet connectivity.
     \iftoggle{showOptionalExperience}{
     \item Built synchronization services for Garuda ID integrating BookMyShow ticketing and face-registration data.
-    }{}
     \item Provided operational and post-event data extraction support for Garuda ID during Indonesian national team matches against Japan and Saudi Arabia in November 2024.
+    }{}
     \item Re-architected the \textbf{surveillance monitoring system} from a Node.js/MySQL monolith into a plugin-based Go, React, and SQLite system for constrained edge-device deployments.
+    \iftoggle{showOptionalExperience}{
     \item Designed plugin integrations for camera stream compression via REST API and AI analytics via gRPC.
+	}{}
     \item Developed Go microservices to incrementally replace legacy ingestion flows and improve write-intensive AI analytics processing from edge devices deployed across 10,000+ Bank BRI cash-recycling machines.
     \item Developed and deployed multiple fixes for business-logic issues and developed video and data migrations from legacy system for \textbf{myVideo, Bank Central Asia internal Video-on-Demand platform}.
 \end{itemize}
