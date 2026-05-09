@@ -30,3 +30,4 @@ latexmkrc
 *.pdf
 # latexindent backup files
 *.bak*
+**/indent.log

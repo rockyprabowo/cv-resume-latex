@@ -12,3 +12,5 @@ signoff:
 
 clean:
 	rm -f *.bak* *.aux *.fdb_latexmk *.fls *.log *.out *.synctex.gz
+	find . -type f -name '*.bak*' -delete
+	find . -type f -name 'indent.log' -delete
