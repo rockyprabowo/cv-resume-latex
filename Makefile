@@ -1,4 +1,4 @@
-.PHONY: signoff
+.PHONY: signoff clean
 
 signoff:
 	@test -n "$(MSG)" || (echo "Usage: make signoff MSG='commit message'"; exit 1)
@@ -9,3 +9,6 @@ signoff:
 	git tag -s -a "$$TAG" -m "$$TAG"; \
 	git push; \
 	git push --tags
+
+clean:
+	rm -f *.bak* *.aux *.fdb_latexmk *.fls *.log *.out *.synctex.gz

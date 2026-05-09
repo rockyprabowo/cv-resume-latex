@@ -28,3 +28,5 @@ latexmkrc
 
 # Generated PDF outputs
 *.pdf
+# latexindent backup files
+*.bak*
