@@ -1,4 +1,14 @@
 \Needspace{6\baselineskip}
 \section*{Professional Summary}
 
-Backend-focused Software Engineer with 6+ years of experience delivering solutions across telecom\iftoggle{showRoleBfi}{, finance-related}{}, ERP, surveillance, SaaS, and edge-device environments. Experienced in systems where latency, reliability, offline operation, and operational constraints directly affect production outcomes. Most recent roles were fixed-scope engagements focused on fast and high-impact delivery, performance optimization, and platform modernization.
+\newcommand{\summarysoftware}{
+	Software Engineer with 7 years of experience building production systems across telecom, ERP\iftoggle{showRoleBfi}{, finance}{}, surveillance, SaaS, and edge-device environments. Delivered backend and user-facing applications, event-driven platforms, multitenant systems, third-party integrations, and performance improvements across cloud and edge environments.
+}
+
+\newcommand{\summarybackend}{
+	Backend-focused Software Engineer with 7 years of experience building APIs, microservices, and event-driven systems across telecom, ERP\iftoggle{showRoleBfi}{, finance}{}, surveillance, SaaS, and edge-device environments. Experienced with multitenant platforms, messaging, caching, third-party integrations, and performance optimization for high-traffic and latency-sensitive production workloads.
+}
+
+\ifcsdef{summary\cvProfile}
+{\csuse{summary\cvProfile}}
+{\summarysoftware}

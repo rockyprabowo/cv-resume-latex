@@ -31,3 +31,6 @@ latexmkrc
 # latexindent backup files
 *.bak*
 **/indent.log
+
+# Local Superpowers planning documents
+/docs/superpowers/

@@ -1,7 +1,14 @@
+\newcommand{\headertitlesoftware}{Software Engineer}
+\newcommand{\headertitlebackend}{Software Engineer -- Backend Specialist}
+
 \begin{center}
 	{\Large \textbf{Rocky Prabowo}}\\
 	\vspace{1pt}
-	\textbf{Software Engineer -- Backend Specialist}\\
+	\textbf{
+		\ifcsdef{headertitle\cvProfile}
+		{\csuse{headertitle\cvProfile}}
+		{\headertitlesoftware}
+	}\\
 	\vspace{1pt}
 	Central Jakarta, Indonesia \;|\; (+62) 856 0946 9838 \;|\; \href{mailto:work@rocky.my.id}{work@rocky.my.id}
 \end{center}
