@@ -7,11 +7,11 @@
 	{January 2026 -- June 2026}
 	{PT Elektronik Distribusi Otomatisasi Terkemuka (eDOT)}
 	{Project-based contract under PT Hermes Solusi Integrasi; remote arrangement}
-
+	{Bandung, Jawa Barat}
 	\begin{itemize}
 		\item Designed and developed backend services for the \textbf{ework Sales Force Automation leaderboard}, supporting supervisor-wide salesperson rankings in a multitenant ERP system.
-		\item Optimized API response paths and caching strategies for the leaderboard, supporting approximately \textbf{21,000 daily active users} with \textbf{65 ms P50} and \textbf{82 ms P95} latency in production.
-		\item Built configurable achievement variables and metric calculation components for the \textbf{esuite platform}, enabling tenant-specific leaderboard formulas, performance metrics, and data-ingestion workflows.
+		\item Built configurable achievement variables and metric calculation components for the \textbf{esuite platform}, including a custom lexer/parser for tenant-specific leaderboard formulas.
+		\item Optimized leaderboard API response paths and caching strategies for those calculations, supporting approximately \textbf{21,000 daily active users} with \textbf{65 ms P50} and \textbf{82 ms P95} latency.
 		\item Designed and built backend services for POS license management, device registration, device status monitoring, and tenant migration tooling.
 	\end{itemize}
 	\tech{Go, Gin, Fiber, gRPC, MongoDB, RabbitMQ, Redis, Docker, k6, OpenTelemetry, AWS.}
@@ -24,7 +24,7 @@
 		{October 2025 -- December 2025}
 		{PT BFI Finance Indonesia, Tbk}
 		{}
-
+		{Tangerang Selatan, Banten}
 		\begin{itemize}
 			\item Delivered frontend and backend updates for \textbf{Loan Origination Re-Architecture}, a data-driven loan origination platform.
 			\item Built experimental web data extraction workflows using browser automation, computer vision, and local AI inference for sources where DOM-based scraping was impractical or unreliable.
@@ -39,10 +39,10 @@
 	{April 2025 -- November 2025}
 	{PT XLSmart Telecom Sejahtera, Tbk}
 	{Contractor under PT Bumi Amartha Teknologi Mandiri}
-
+	{Jakarta Selatan, Jakarta}
 	\begin{itemize}
-		\item Designed and developed backend services for the \textbf{XLSMART corporate website}, transforming internal CMS data into public-facing API responses.
-		\item Implemented caching and cache invalidation flows to keep website content available and consistent during recurring CMS downtime.
+		\item Designed and developed backend services for the \textbf{XLSMART corporate website}, turning unreliable CMS data into stable APIs for the public site.
+		\item Implemented an anti-corruption layer, caching, and cache invalidation to keep the public site available and consistent during recurring CMS downtime.
 		\item Introduced automated TypeScript SDK generation for React/Next.js, reducing API contract drift between frontend and backend teams.
 	\end{itemize}
 	\tech{Go, TypeScript, Fiber, Node.js, Next.js, Hydra Express, Laravel, MariaDB, Redis, k6, AWS.}
@@ -54,10 +54,10 @@
 	{December 2024 -- April 2025}
 	{PT Indosat, Tbk}
 	{Contractor under PT Prima Raya Solusindo}
-
+	{Jakarta Selatan, Jakarta}
 	\begin{itemize}
 		\item Developed backend integration services for the \textbf{IM3 WhatsApp chatbot}, enabling prepaid eSIM ordering flows and number-pool service updates.
-		\item Built voucher management and claim systems for \textbf{myIM3} and \textbf{Bima+} partner promotional campaigns, handling concurrent claim traffic during peak campaign periods.
+		\item Built voucher management and claim systems for \textbf{myIM3} and \textbf{Bima\texttt{+}} partner promotional campaigns, handling concurrent claim traffic during peak campaign periods.
 		\item Implemented multilingual email support for prepaid eSIM activation and registration flows.
 	\end{itemize}
 	\tech{Go, Labstack Echo, GORM, Redis, MariaDB/MySQL, Docker Swarm.}
@@ -69,19 +69,22 @@
 	{August 2023 -- December 2024}
 	{PT Millenio Amerta Data / AssistX Enterprise}
 	{}
-
+	{Jakarta Pusat, Jakarta}
 	\begin{itemize}
-		\item Designed an air-gapped on-premise system for \textbf{Garuda ID}, a proprietary ML-based face-recognition platform, enabling gate officers to validate ticket and face-registration data without public Internet connectivity.
-		\item Optimized Garuda ID face-recognition engine latency in production appliance from \textasciitilde2.000 ms to \textasciitilde120 ms at the expected 32 concurrent requests by reducing vector-retrieval and input-size related inference overhead.
-		      \iftoggle{showOptionalExperience}{
-		\item Provided operational documentation, on-site support, monitoring, and post-event data extraction for Garuda ID during Indonesian national team matches against Japan and Saudi Arabia in November 2024.
-		      }{}
-		\item Re-architected the \textbf{surveillance monitoring system} from a Node.js/MySQL monolith into a plugin-based Go, React, and SQLite platform for edge deployments.
+		\item \textbf{Garuda ID}
+		\begin{itemize}
+			\item Designed the air-gapped backend and sync workflow for stadium gate operations, enabling ticket and face-registration checks without public Internet access.
+			\item Optimized face-recognition engine latency in production appliance from \textasciitilde2.000 ms to \textasciitilde120 ms at the expected 32 concurrent requests by reducing vector-retrieval and input-size related inference overhead.
+			\iftoggle{showOptionalExperience}{
+			\item Provided operational documentation, on-site support, monitoring, and post-event data extraction during Indonesian national team matches against Japan and Saudi Arabia in November 2024.
+			}{}
+		\end{itemize}
+		\item Led the re-architecture of the \textbf{surveillance system} from a Node.js/MySQL monolith to a pluggable Go/React/SQLite platform, guiding interns and cutting one deployment from \textbf{2 GB} to \textbf{180 MB}.
 		      \iftoggle{showOptionalExperience}{
 		\item Designed plugin integrations for camera stream compression via REST API and AI analytics via gRPC.
 		      }{}
-		\item Built Go microservices that incrementally replaced legacy ingestion services for Bank BRI object/person detection, improving write-heavy AI analytics from edge devices across 10,000+ cash-recycling machines.
-		\item Implemented business-logic fixes and migration tooling for \textbf{myVideo}, internal Bank Central Asia video-on-demand platform, covering video assets and metadata transfer from the legacy platform.
+		\item Built Go microservices that incrementally replaced legacy PHP ingestion services for Bank BRI object/person detection across 10,000+ cash-recycling machines.
+		\item Implemented migration tooling and business-logic fixes for \textbf{myVideo}, Bank Central Asia's internal video-on-demand platform.
 	\end{itemize}
 	\tech{TypeScript, Go, Python, PHP, Gin, Fiber, FastAPI, Node.js, React, MongoDB, MySQL, Redis, BullMQ, gRPC, Active Directory, SAML, ONVIF, SQLite, Docker, Prometheus, k3s, Azure, Google Cloud.}
 \end{jobentry}
@@ -92,12 +95,18 @@
 	{July 2019 -- June 2023}
 	{PT Lokacipta Visi Digital}
 	{Freelance 2019 -- 2020, then full-time}
-
+	{Palembang, Sumatera Selatan}
 	\begin{itemize}
-		\item Built and maintained event-driven CRM and ERP systems for eight local SMEs, covering sales, inventory, order processing, reporting, and access control.
-		\item Delivered workflow improvements that clients reported as contributing to 10--35\% gains in lead conversion and sales performance.
-		\item Developed \textbf{customized end-to-end karaoke operations systems} across South Sumatra, including playback applications, POS, online payments, and inventory modules.
-		\item Improved operational reliability and reporting controls, reducing customer-reported playback complaints and inventory/cash-loss incidents.
+		\item \textbf{CRM and ERP systems for eight local SMEs}
+		\begin{itemize}
+			\item Built extensible event-driven systems covering sales, finance, controlling, inventory, order processing, reporting, and various custom made business-driven components.
+			\item Delivered business process improvements across SME clients, including one client reporting 10--35\% gains in lead conversion and sales performance.
+		\end{itemize}
+		\item \textbf{End-to-end karaoke operations systems}
+		\begin{itemize}
+			\item Built systems across South Sumatra covering playback apps, POS, payments, and inventory systems, and oversaw infrastructure procurement, setup, and launch support.
+			\item Delivered operational reliability and reporting controls improvements, reducing playback complaints and inventory/cash-loss incidents across client deployments.
+		\end{itemize}
 		\item Contributed to NDA-covered systems involving .NET incremental migrations, Spring Boot 2 and Ruby on Rails development, and maintenance of Cassandra, Oracle Database, and Elasticsearch implementations.
 	\end{itemize}
 	\tech{TypeScript, PHP, C++, Dart, Nest.js, Vue.js 3, Nuxt, Laravel, PostgreSQL, SQLite, Redis, Kafka, RabbitMQ, Keycloak, Meilisearch, Docker, k3s, Qt, Flutter.}
