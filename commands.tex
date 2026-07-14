@@ -18,9 +18,9 @@
 	{\small\textbf{Tech:} #1}\par
 }
 
-\newcommand{\role}[4]{
+\newcommand{\role}[5]{
 \textbf{#1} \hfill \textbf{#2} \\
-\textbf{#3}
+\textbf{#3}\ifstrempty{#5}{}{\hfill #5}
 \ifstrempty{#4}
 {\par\vspace{1pt}}
 {\\{\footnotesize\textit{#4}}\par\vspace{1pt}}
