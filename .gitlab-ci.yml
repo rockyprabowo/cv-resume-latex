@@ -12,13 +12,19 @@ build_cv_pdf:
     - if: '$CI_COMMIT_TAG'
   script:
     - latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+    - DATE_EN="$(LC_TIME=C date '+%B %d, %Y')"
+    - PDF_NAME="CV Rocky Prabowo (${DATE_EN}).pdf"
+    - LOG_NAME="main_${CI_COMMIT_TAG}.log"
+    - mkdir -p artifact
+    - cp main.pdf "artifact/${PDF_NAME}"
+    - cp main.log "artifact/${LOG_NAME}"
+    - cd artifact && zip -q "../cv-pdf-${CI_COMMIT_TAG}.zip" "${PDF_NAME}" "${LOG_NAME}"
   artifacts:
     name: "cv-pdf-$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
     when: always
     expire_in: 14 days
     paths:
-      - main.pdf
-      - main.log
+      - cv-pdf-*.zip
 
 release_cv_pdf:
   stage: release
@@ -36,7 +42,5 @@ release_cv_pdf:
     description: "Automated CV PDF release for tag $CI_COMMIT_TAG"
     assets:
       links:
-        - name: "main.pdf"
-          url: "${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/main.pdf"
-        - name: "main.log"
-          url: "${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/main.log"
+        - name: "cv-pdf-${CI_COMMIT_TAG}.zip"
+          url: "${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/cv-pdf-${CI_COMMIT_TAG}.zip"

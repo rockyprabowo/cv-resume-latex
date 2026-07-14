@@ -18,13 +18,26 @@ jobs:
       - name: Build PDF
         run: latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
 
+      - name: Package build artifact
+        run: |
+          DATE_EN="$(LC_TIME=C date '+%B %d, %Y')"
+          TAG="${GITHUB_REF_NAME}"
+          PDF_NAME="CV Rocky Prabowo (${DATE_EN}).pdf"
+          LOG_NAME="main_${TAG}.log"
+          mkdir -p artifact
+          cp main.pdf "artifact/${PDF_NAME}"
+          cp main.log "artifact/${LOG_NAME}"
+          (
+            cd artifact
+            zip -q "../cv-pdf-${TAG}.zip" "${PDF_NAME}" "${LOG_NAME}"
+          )
+
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v7
         with:
           name: cv-pdf
           path: |
-            main.pdf
-            main.log
+            cv-pdf-*.zip
           if-no-files-found: error
 
   release:
@@ -40,16 +53,10 @@ jobs:
           name: cv-pdf
           path: release-assets
 
-      - name: Rename release assets
+      - name: Extract release assets
         run: |
-          DATE_EN="$(LC_TIME=C date '+%B %d, %Y')"
           TAG="${GITHUB_REF_NAME}"
-          PDF_NAME="CV Rocky Prabowo (${DATE_EN}).pdf"
-          LOG_NAME="main_${TAG}.log"
-          test -f release-assets/main.pdf
-          test -f release-assets/main.log
-          mv release-assets/main.pdf "release-assets/${PDF_NAME}"
-          mv release-assets/main.log "release-assets/${LOG_NAME}"
+          unzip -q "release-assets/cv-pdf-${TAG}.zip" -d release-assets
 
       - name: Verify release assets
         run: ls -lah release-assets
